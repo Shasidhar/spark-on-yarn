@@ -29,22 +29,20 @@ Follow the following steps to run the example.
 This folder will hold the jar built in the build step. As we discussed earlier,
 the jar containing application master has to be in HDFS in order to add as a local resource.
 
-{% highlight sh %}
-hdfs dfs -mkdir /jars
-{% endhighlight%} 
+
+			hdfs dfs -mkdir /jars
+
 
 #### Step 4.2 : Put the jar file in /jars
 
 Copy the jar from your local file system to HDFS.
 
-{% highlight sh %}
- hdfs dfs -put <jar-path> /jars
-{% endhighlight%} 
+
+			hdfs dfs -put <jar-path> /jars
+
 
 #### Step 4.3 : Run the code
 
 Replace *jar-path* with absolute path to jar on you system. Also put appropriate values for namenode-host and namenode-port. The last parameter specifies number of containers.
 
-{% highlight sh %}
- hadoop jar <jar-path>  com.madhukaraphatak.yarn.helloworld.Client hdfs://<namenode-host:namenode-port>/jars/yarn-helloworld-scala-1.0-SNAPSHOT.jar 1
-{% endhighlight%} 
+			hadoop jar <jar-path>  com.madhukaraphatak.yarn.helloworld.Client hdfs://<namenode-host:namenode-port>/jars/yarn-helloworld-scala-1.0-SNAPSHOT.jar 1
