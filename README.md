@@ -24,7 +24,7 @@ We have to run the program by generating the jar and submitting to the hadoop cl
     
 Follow the following steps to run the example.
 
-### Step 6.1 : Create jars folder in HDFS
+#### Step 4.1 : Create jars folder in HDFS
 
 This folder will hold the jar built in the build step. As we discussed earlier,
 the jar containing application master has to be in HDFS in order to add as a local resource.
@@ -33,7 +33,7 @@ the jar containing application master has to be in HDFS in order to add as a loc
 hdfs dfs -mkdir /jars
 {% endhighlight%} 
 
-### Step 6.2 : Put the jar file in /jars
+#### Step 4.2 : Put the jar file in /jars
 
 Copy the jar from your local file system to HDFS.
 
@@ -41,7 +41,7 @@ Copy the jar from your local file system to HDFS.
  hdfs dfs -put <jar-path> /jars
 {% endhighlight%} 
 
-### Step 6.3 : Run the code
+#### Step 4.3 : Run the code
 
 Replace *jar-path* with absolute path to jar on you system. Also put appropriate values for namenode-host and namenode-port. The last parameter specifies number of containers.
 
