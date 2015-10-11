@@ -1,10 +1,8 @@
-package com.madhukaraphatak.yarnexamples.akka
+package com.madhukaraphatak.yarnexamples.helloworld
 
 import java.io.File
 import java.util.Collections
 
-import akka.actor._
-import com.typesafe.config.ConfigFactory
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.hadoop.yarn.api.ApplicationConstants
@@ -22,26 +20,6 @@ import scala.collection.mutable
  */
 object Client {
 
-  
-  class RecieveActor extends Actor {
-    import com.madhukaraphatak.yarnexamples.akka.Client.RecieveActor._
-    override def receive: Receive = {
-      case Hi => {
-        println("good to be here")
-        context.stop(self)
-      }
-      case msg:String=>{
-        println("received message:"+msg)
-        context.stop(self)
-      }
-    }
-  }
-  
-  object RecieveActor{
-    object Hi extends Serializable
-  }
-  
-  
   def setUpAppMasterJar(jarPath: Path, appMasterJar: LocalResource)(implicit conf:Configuration) = {
     val jarStat = FileSystem.get(conf).getFileStatus(jarPath)
     appMasterJar.setResource(ConverterUtils.getYarnUrlFromPath(jarPath))
@@ -67,7 +45,8 @@ object Client {
   def main(args: Array[String]) {
 
     implicit val conf = new YarnConfiguration()
-    val jarPath = args(0)
+    val command = args(0)
+    val jarPath = args(1)
 
     val client = YarnClient.createYarnClient()
     client.init(conf)
@@ -77,35 +56,12 @@ object Client {
 
     val app = client.createApplication()
 
-
-
-
-    val taskFilePath ="hello"
-    val config = ConfigFactory.parseFile(new File(Thread.currentThread().getContextClassLoader.
-      getResource("remote_application.conf").getFile))
-    println("config is" + config)
-    val actorSystem = ActorSystem.create("actorSystemYarn",config)
-
-    actorSystem.actorOf(Props[RecieveActor],name = "receiveActor")
-
-
-    /*val serialization = SerializationExtension(actorSystem)
-
-    val fileSystem = FileSystem.get(conf)
-    val taskFilePath = "/tasks/"+UUID.randomUUID().toString
-    val hdfsFile = fileSystem.create(new Path(taskFilePath))
-    val out = new ObjectOutputStream(hdfsFile)
-    out.write(serialization.findSerializerFor(recieveActorRef).toBinary(recieveActorRef))
-    IOUtils.closeStream(out)
-    IOUtils.closeStream(hdfsFile)
-*/
-
     val amContainer = Records.newRecord(classOf[ContainerLaunchContext])
     amContainer.setCommands(List(
       "$JAVA_HOME/bin/java" +
       " -Xmx256M" +
-      " com.madhukaraphatak.yarnexamples.akka.ApplicationMaster" +
-        " " + taskFilePath +"  "+ jarPath+" "+
+      " com.madhukaraphatak.yarnexamples.ApplicationMaster" +
+        " " + command +"  "+ jarPath+" "+
       " 1>" + ApplicationConstants.LOG_DIR_EXPANSION_VAR + "/stdout" +
       " 2>" + ApplicationConstants.LOG_DIR_EXPANSION_VAR + "/stderr"
     ).asJava)

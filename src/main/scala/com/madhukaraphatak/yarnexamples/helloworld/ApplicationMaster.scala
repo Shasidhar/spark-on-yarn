@@ -1,4 +1,4 @@
-package com.madhukaraphatak.yarnexamples
+package com.madhukaraphatak.yarnexamples.helloworld
 
 import java.io.File
 import java.util.Collections
@@ -8,10 +8,10 @@ import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.hadoop.yarn.api.ApplicationConstants
 import org.apache.hadoop.yarn.api.ApplicationConstants.Environment
 import org.apache.hadoop.yarn.api.records._
-import org.apache.hadoop.yarn.client.api.{NMClient, AMRMClient}
 import org.apache.hadoop.yarn.client.api.AMRMClient.ContainerRequest
+import org.apache.hadoop.yarn.client.api.{AMRMClient, NMClient}
 import org.apache.hadoop.yarn.conf.YarnConfiguration
-import org.apache.hadoop.yarn.util.{Records, Apps, ConverterUtils}
+import org.apache.hadoop.yarn.util.{Apps, ConverterUtils, Records}
 
 import scala.collection.JavaConverters._
 

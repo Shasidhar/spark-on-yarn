@@ -1,7 +1,7 @@
-package com.madhukaraphatak.yarnexamples.akka
+package com.madhukaraphatak.yarnexamples.simpleakka
 
 import akka.actor._
-import com.madhukaraphatak.yarnexamples.akka.Client.RecieveActor
+import com.madhukaraphatak.yarnexamples.simpleakka.Client.RecieveActor
 import com.typesafe.config.ConfigFactory
 
 

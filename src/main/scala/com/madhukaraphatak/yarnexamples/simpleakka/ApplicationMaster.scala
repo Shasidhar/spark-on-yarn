@@ -1,4 +1,4 @@
-package com.madhukaraphatak.yarnexamples.akka
+package com.madhukaraphatak.yarnexamples.simpleakka
 
 import java.io.File
 

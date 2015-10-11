@@ -1,4 +1,4 @@
-package com.madhukaraphatak.yarnexamples
+package com.madhukaraphatak.yarnexamples.helloworld
 
 import java.util
 import java.util.Collections

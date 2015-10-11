@@ -1,4 +1,4 @@
-package com.madhukaraphatak.yarnexamples
+package com.madhukaraphatak.yarnexamples.helloworld
 
 /**
  * Created by madhu on 16/12/14.
