@@ -6,6 +6,8 @@ Follow the below steps to clone code and setup your machine.
 
 * Java
 * Maven 3
+* Hadoop 2.0+
+* Yarn
 
 
 ## 2. Getting code
