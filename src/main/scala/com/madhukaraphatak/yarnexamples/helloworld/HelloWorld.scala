@@ -6,6 +6,7 @@ package com.madhukaraphatak.yarnexamples.helloworld
 object HelloWorld {
   def main(args: Array[String]) {
     println("helloworld")
+    Thread.sleep(10000)
   }
 
 }

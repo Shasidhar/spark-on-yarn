@@ -45,11 +45,9 @@ object ApplicationMaster {
 
   def main(args: Array[String]) {
 
-    val command = args(0)
-    val jarPath = args(1)
+    val jarPath = args(0)
     val n = 2 //args(1).toInt
 
-    println("command is "+command)
 
     implicit val conf = new YarnConfiguration()
 
@@ -97,8 +95,7 @@ object ApplicationMaster {
           List(
             "$JAVA_HOME/bin/java" +
               " -Xmx256M" +
-              " com.madhukaraphatak.yarnexaperiments.HelloWorld" +
-              " " + command +
+              " com.madhukaraphatak.yarnexamples.helloworld.HelloWorld " +
               " 1>" + ApplicationConstants.LOG_DIR_EXPANSION_VAR + "/stdout" +
               " 2>" + ApplicationConstants.LOG_DIR_EXPANSION_VAR + "/stderr"
           ).asJava

@@ -45,8 +45,7 @@ object Client {
   def main(args: Array[String]) {
 
     implicit val conf = new YarnConfiguration()
-    val command = args(0)
-    val jarPath = args(1)
+    val jarPath = args(0)
 
     val client = YarnClient.createYarnClient()
     client.init(conf)
@@ -60,8 +59,8 @@ object Client {
     amContainer.setCommands(List(
       "$JAVA_HOME/bin/java" +
       " -Xmx256M" +
-      " com.madhukaraphatak.yarnexamples.ApplicationMaster" +
-        " " + command +"  "+ jarPath+" "+
+      " com.madhukaraphatak.yarnexamples.helloworld.ApplicationMaster " +
+      jarPath+" "+
       " 1>" + ApplicationConstants.LOG_DIR_EXPANSION_VAR + "/stdout" +
       " 2>" + ApplicationConstants.LOG_DIR_EXPANSION_VAR + "/stderr"
     ).asJava)
