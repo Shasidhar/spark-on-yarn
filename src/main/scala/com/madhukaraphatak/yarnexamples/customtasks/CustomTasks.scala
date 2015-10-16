@@ -54,7 +54,6 @@ object CustomTasks {
 
   def main(args: Array[String]) {
     val yarnScheduler = new YarnScheduler(args(0))
-    println("hi shashi")
     println("running multiple tasks")
     println("result is" + yarnScheduler.runTasks(resultTasks(): _*).toList)
     /*println("running sleep tasks")
